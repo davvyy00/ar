@@ -11,6 +11,8 @@
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <!-- import events.js script -->
+    <script src="https://rawgit.com/nicolocarpignoli/nicolocarpignoli.github.io/master/ar-click-events/events.js"></script>
     <link rel="manifest" href="manifest.json">
 </head>
 
@@ -24,17 +26,14 @@
 </script>
 
 <body style="margin: 0; overflow: hidden;">
-    <a-scene 
-    cursor='rayOrigin: mouse; fuse: true; fuseTimeout: 0;'
-    raycaster="objects: [clickhandler];"
-    debug vr-mode-ui="enabled: false" embedded arjs="sourceType: webcam; debugUIEnabled: true;">
+    <a-scene debug vr-mode-ui="enabled: false" embedded arjs="sourceType: webcam; debugUIEnabled: true;">
         <!--<a-text
         value="TARIQ IS BEHIND YOU SMALLER!!"
         look-at="[gps-camera]"
         scale="5 5 5"
         gps-entity-place="latitude: 53.543916; longitude: -113.443018;"
       ></a-text> -->
-        <a-image class="one" clickhandler
+        <a-image class="one" clickhandler emitevents="true" cursor="rayOrigin: mouse"
             gps-entity-place="latitude: 53.543909; longitude: -113.442837" scale="3 3 3" src="img/bee.png">
         </a-image>
         <a-image class="two" 
