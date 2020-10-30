@@ -27,6 +27,19 @@ Common.makeFullScreen();
 document.addEventListener('DOMContentLoaded', (event) => {
     //the event occurred
     console.log('DOM loaded');
+
+    let bee1 = document.querySelector('.one');
+    let bee2 = document.querySelector('.one');
+
+    bee1.addEventListener('click', (e)=>{
+    	console.log(e.target)
+    	alert(e.target.distancemsg);
+    })
+
+    bee2.addEventListener('click', (e)=>{
+    	console.log(e.target);
+    	alert(e.target.distancemsg);
+    })
 });
 
 window.addEventListener("load",function() {
