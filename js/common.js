@@ -2,7 +2,6 @@ var Common = (function() {
     console.log('IFFE called');
     let makeFullScreen = () => {
     	console.log('make full screen');
-    	window.scrollTo(0,1);
 
         var doc = window.document;
         var docEl = doc.documentElement;
@@ -22,14 +21,13 @@ var Common = (function() {
     };
 })();
 
-Common.makeFullScreen();
 
 document.addEventListener('DOMContentLoaded', (event) => {
     //the event occurred
     console.log('DOM loaded');
 
     let bee1 = document.querySelector('.one');
-    let bee2 = document.querySelector('.one');
+    let bee2 = document.querySelector('.two');
 
     bee1.addEventListener('click', (e)=>{
     	console.log(e.target)
@@ -40,11 +38,4 @@ document.addEventListener('DOMContentLoaded', (event) => {
     	console.log(e.target);
     	alert(e.target.distancemsg);
     })
-});
-
-window.addEventListener("load",function() {
-    setTimeout(function(){
-        // This hides the address bar:
-        window.scrollTo(0, 1);
-    }, 0);
 });
