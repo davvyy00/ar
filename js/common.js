@@ -3,7 +3,7 @@ var Common = (function() {
     let makeFullScreen = () => {
     	console.log('make full screen');
     	window.scrollTo(0,1);
-    	
+
         var doc = window.document;
         var docEl = doc.documentElement;
 
@@ -27,4 +27,11 @@ Common.makeFullScreen();
 document.addEventListener('DOMContentLoaded', (event) => {
     //the event occurred
     console.log('DOM loaded');
+});
+
+window.addEventListener("load",function() {
+    setTimeout(function(){
+        // This hides the address bar:
+        window.scrollTo(0, 1);
+    }, 0);
 });
