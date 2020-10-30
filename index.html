@@ -4,10 +4,14 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <title>Location-based AR.js demo</title>
+    <script src="js/common.js"></script>
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <link rel="manifest" href="/manifest.json">
 </head>
 
 <body style="margin: 0; overflow: hidden;">
@@ -19,7 +23,7 @@
         gps-entity-place="latitude: 53.543916; longitude: -113.443018;"
       ></a-text> -->
         <a-image 
-            gps-entity-place="latitude: 53.543916; longitude: -113.443018" scale="1 1 1" src="imgs/bee.png">
+            gps-entity-place="latitude: 53.543916; longitude: -113.443018" scale="1 1 1" src="img/bee.png">
         </a-image>
         <a-camera gps-camera rotation-reader> </a-camera>
     </a-scene>
