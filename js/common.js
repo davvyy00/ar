@@ -26,13 +26,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     //the event occurred
     console.log('DOM loaded');
 
-    AFRAME.registerComponent('clickhandler', {
-        init: function() {
-            this.el.addEventListener('click', () => {
-                alert('Clicked!')
-            });
-    }});
-
     /*let bee1 = document.querySelector('.one');
     let bee2 = document.querySelector('.two');
 
