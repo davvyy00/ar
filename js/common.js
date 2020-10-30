@@ -3,7 +3,7 @@ var Common = (function() {
     let makeFullScreen = () => {
     	console.log('make full screen');
     	window.scrollTo(0,1);
-    	
+    	debugger
         var doc = window.document;
         var docEl = doc.documentElement;
 
@@ -16,6 +16,7 @@ var Common = (function() {
             cancelFullScreen.call(doc);
         }
     }
+
     return {
         makeFullScreen
     };
