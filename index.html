@@ -8,24 +8,32 @@
     <meta name="mobile-web-app-capable" content="yes">
     <title>Location-based AR.js demo</title>
     <script src="js/common.js"></script>
-    <!--<script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script> -->
-    <script src="https://aframe.io/releases/0.9.0/aframe.min.js"></script>
-    <script src="https://rawgit.com/jeromeetienne/AR.js/master/aframe/build/aframe-ar.min.js"></script>
-    <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
-
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
     <link rel="manifest" href="manifest.json">
 </head>
-
 <script>
-    AFRAME.registerComponent('clickhandler', {
-        init: function() {
-            console.log('wtf')
-            this.el.addEventListener('click', () => {
-                alert('Clicked!')
-            });
-    }});
+AFRAME.registerComponent('raycaster-listen', {
+    init: function() {
+        // Use events to figure out what raycaster is listening so we don't have to
+        // hardcode the raycaster.
+        this.el.addEventListener('raycaster-intersected', evt => {
+            this.raycaster = evt.detail.el;
+        });
+        this.el.addEventListener('raycaster-intersected-cleared', evt => {
+            this.raycaster = null;
+        });
+    },
+
+    tick: function() {
+        if (!this.raycaster) { return; } // Not intersecting.
+
+        let intersection = this.raycaster.components.raycaster.getIntersection(this.el);
+        if (!intersection) { return; }
+        console.log(intersection.point);
+    }
+});
 </script>
 
 <body style="margin: 0; overflow: hidden;">
@@ -36,13 +44,12 @@
         scale="5 5 5"
         gps-entity-place="latitude: 53.543916; longitude: -113.443018;"
       ></a-text> -->
-        <a-image class="one" clickhandler emitevents="true" cursor="rayOrigin: mouse"
-            gps-entity-place="latitude: 53.543909; longitude: -113.442837" scale="3 3 3" src="img/bee.png">
+        <a-entity raycaster="objects: .clickable" cursor></a-entity>
+        <a-image class="one cliclable" clickhandler emitevents="true" cursor="rayOrigin: mouse" gps-entity-place="latitude: 53.543909; longitude: -113.442837" scale="3 3 3" src="img/bee.png">
         </a-image>
-        <a-image class="two" 
-            gps-entity-place="latitude: 53.544484; longitude: -113.439941" scale="3 3 3" src="img/bee.png">
+        <a-image class="two" gps-entity-place="latitude: 53.544484; longitude: -113.439941" scale="3 3 3" src="img/bee.png">
         </a-image>
-        <a-camera gps-camera="maxDistance: 50;"  rotation-reader> </a-camera>
+        <a-camera gps-camera="maxDistance: 50;" rotation-reader> </a-camera>
     </a-scene>
 </body>
 
