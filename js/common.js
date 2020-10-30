@@ -26,7 +26,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
     //the event occurred
     console.log('DOM loaded');
 
-    let bee1 = document.querySelector('.one');
+    AFRAME.registerComponent('clickhandler', {
+        init: function() {
+            this.el.addEventListener('click', () => {
+                alert('Clicked!')
+            });
+    }});
+
+    /*let bee1 = document.querySelector('.one');
     let bee2 = document.querySelector('.two');
 
     bee1.addEventListener('click', (e)=>{
@@ -37,5 +44,5 @@ document.addEventListener('DOMContentLoaded', (event) => {
     bee2.addEventListener('click', (e)=>{
     	console.log(e.target);
     	alert(e.target.distancemsg);
-    })
+    })*/
 });
