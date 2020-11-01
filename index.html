@@ -48,6 +48,7 @@ AFRAME.registerComponent('clickable', {
         init: function() {
             this.el.addEventListener('click', () => {
                 alert('Clicked!')
+                console.log(this.el);
             });
     }});
 </script>
