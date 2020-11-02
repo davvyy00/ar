@@ -13,6 +13,7 @@
     <script src="https://raw.githack.com/AR-js-org/AR.js/3.3.0/aframe/build/aframe-ar-nft.js"></script>
     <link rel="manifest" href="manifest.json">
     <script>
+        THREEx.ArToolkitContext.baseURL = 'https://raw.githack.com/jeromeetienne/ar.js/master/three.js/'
     AFRAME.registerComponent('clickhandler', {
         init: function() {
             this.el.addEventListener('click', () => {
@@ -33,7 +34,7 @@
         embedded arjs="sourceType: webcam; debugUIEnabled: true;">
     
 
-        <a-entity gltf-model="models/woodenmug/scene.gltf" rotation="0 180 0" scale=".01 .01 0.1" gps-entity-place="latitude: 53.543909; longitude: -113.442837;" animation-mixer/>
+        <a-entity gltf-model="models/woodenmug/scene.gltf" rotation="0 180 0" scale="0.01 0.01 0.01" gps-entity-place="latitude: 53.543909; longitude: -113.442837;" animation-mixer/>
 
 
         <!--<a-image clickhandler gps-entity-place="latitude: 53.543909; longitude: -113.442837" scale="3 3 3" src="img/bee.png">
