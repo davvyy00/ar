@@ -22,37 +22,14 @@
             });
         }
     });
-    AFRAME.registerComponent('autoscale', {
-        schema: { type: 'number', default: 1 },
-        init: function() {
-            this.scale();
-            this.el.addEventListener('object3dset', () => this.scale());
-        },
-        scale: function() {
-            const el = this.el;
-            const span = this.data;
-            const mesh = el.getObject3D('mesh');
-
-            if (!mesh) return;
-
-            // Compute bounds.
-            const bbox = new THREE.Box3().setFromObject(mesh);
-
-            // Normalize scale.
-            const scale = span / bbox.getSize().length();
-            mesh.scale.set(scale, scale, scale);
-
-            // Recenter.
-            const offset = bbox.getCenter().multiplyScalar(scale);
-            mesh.position.sub(offset);
-        }
-    });
     </script>
 </head>
 
 <body style="margin: 0; overflow: hidden;">
     <a-scene cursor='rayOrigin: mouse; fuse: true; fuseTimeout: 0;' raycaster="objects: [clickhandler];" debug vr-mode-ui="enabled: false" embedded arjs="sourceType: webcam; debugUIEnabled: true;">
-        <a-entity gltf-model="models/woodenmug/scene.gltf" autoscale="2" gps-entity-place="latitude: 53.543909; longitude: -113.442837;" />
+        <a-asset-item id="car" src="models/woodenmug/scene.gltf"></a-asset-item>
+        </a-assets>
+        <a-entity gltf-model="car" scale="0.1 0.1 0.1" gps-entity-place="latitude: 53.543909; longitude: -113.442837;" />
         <!--<a-image clickhandler gps-entity-place="latitude: 53.543909; longitude: -113.442837" scale="3 3 3" src="img/bee.png">
         </a-image>
         <a-image clickhandler gps-entity-place="latitude: 53.544714; longitude: -113.439948" scale="3 3 3" src="img/bee.png">
