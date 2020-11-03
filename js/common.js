@@ -40,6 +40,7 @@ var Common = (function() {
         icon.setAttribute('uuid', location.uuid);
         icon.setAttribute('scale', config.scale);
         icon.setAttribute('clickhandler', '');
+        icon.setAttribute('animation-mixer', '');
 
         scene.appendChild(icon);
     }
