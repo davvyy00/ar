@@ -12,7 +12,7 @@ AFRAME.registerComponent('clickhandler', {
 var Common = (function() {
     console.log('IFFE called');
 
-    const configOne = { modelId: '#asset', scale: '.04 .04 .04' };
+    const configOne = { modelId: '#asset', scale: '10 10 10' };
 
     const locations = [{ lat: 53.543909, long: -113.442837, uuid: 4 }];
 
