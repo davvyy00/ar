@@ -1,7 +1,23 @@
+// Click event for a 3d model, or any object inside the scene
+AFRAME.registerComponent('clickhandler', {
+    init: function() {
+        this.el.addEventListener('click', () => {
+            console.log(this.el);
+            const distance = this.el.getAttribute('distancemsg')
+            alert(`You are ${distance} from the bee`);
+        });
+    }
+});
+
 var Common = (function() {
     console.log('IFFE called');
+
+    const configOne = { modelId: '#asset', scale: '.04 .04 .04' };
+
+    const locations = [{ lat: 53.543909, long: -113.442837, uuid: 4 }];
+
     let makeFullScreen = () => {
-    	console.log('make full screen');
+        console.log('make full screen');
 
         var doc = window.document;
         var docEl = doc.documentElement;
@@ -16,26 +32,34 @@ var Common = (function() {
         }
     }
 
+    let addModelToScene = (location, config) => {
+        const scene = document.querySelector('a-scene');
+        const icon = document.createElement('a-entity');
+        icon.setAttribute('gps-entity-place', `latitude: ${location.lat}; longitude: ${location.long}`);
+        icon.setAttribute('gltf-model', config.modelId);
+        icon.setAttribute('uuid', location.uuid);
+        icon.setAttribute('scale', config, scale);
+        icon.setAttribute('clickhandler', '');
+
+        scene.appendChild(icon);
+    }
+
     return {
-        makeFullScreen
+        makeFullScreen,
+        addModelToScene,
+        locations,
+        configOne
     };
 })();
 
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    //the event occurred
+
     console.log('DOM loaded');
 
-    /*let bee1 = document.querySelector('.one');
-    let bee2 = document.querySelector('.two');
-
-    bee1.addEventListener('click', (e)=>{
-    	console.log(e.target)
-    	alert(e.target.distancemsg);
-    })
-
-    bee2.addEventListener('click', (e)=>{
-    	console.log(e.target);
-    	alert(e.target.distancemsg);
-    })*/
+    setTimeout(() => {
+        Common.locations.forEach((location) => {
+            Common.addModelToScene(location, Common.configOne);
+        })
+    }, 3000);
 });
