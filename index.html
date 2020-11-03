@@ -17,7 +17,8 @@
         init: function() {
             this.el.addEventListener('click', () => {
                 console.log(this.el);
-                alert(`You are ${this.el.distancemsg} from the bee`);
+                const distance = this.el.getAttribute('distancemsg')
+                alert(`You are ${distance} from the bee`);
             });
         }
     });
