@@ -36,7 +36,7 @@ var Common = (function() {
         const scene = document.querySelector('a-scene');
         const icon = document.createElement('a-entity');
         icon.setAttribute('gps-entity-place', `latitude: ${location.lat}; longitude: ${location.long}`);
-        icon.setAttribute('obj-model', config.modelId);
+        icon.setAttribute('gltf-model', config.modelId);
         icon.setAttribute('uuid', location.uuid);
         icon.setAttribute('scale', config.scale);
         icon.setAttribute('clickhandler', '');
