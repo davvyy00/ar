@@ -15,3 +15,10 @@ firebase.initializeApp(firebaseConfig);
 
 const db = firebase.firestore();
 debugger
+
+const collection = db.collection('prize_locations');
+
+collection.get().then((resp)=>{
+	console.log(resp);
+	debugger
+})
