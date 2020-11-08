@@ -38,10 +38,10 @@ var Common = (function() {
         const icon = document.createElement('a-entity');
         icon.setAttribute('gps-entity-place', `latitude: ${location.lat}; longitude: ${location.long}`);
         icon.setAttribute('obj-model', config.asset);
-        icon.setAttribute('uuid', location.uuid);
+        //icon.setAttribute('uuid', location.uuid);
         icon.setAttribute('scale', config.scale);
         icon.setAttribute('clickhandler', '');
-        icon.setAttribute('animation-mixer', '');
+        //icon.setAttribute('animation-mixer', '');
 
         scene.appendChild(icon);
     }
