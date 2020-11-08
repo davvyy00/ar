@@ -1,3 +1,5 @@
+//import * as geofirestore from 'geofirestore';
+
 // TODO: Replace the following with your app's Firebase project configuration
 var firebaseConfig = {
     apiKey: "AIzaSyCNuxdjzx7hyAmbOAiT3SsEgPy-Br0vQ_k",
@@ -12,22 +14,3 @@ var firebaseConfig = {
 
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-
-const db = firebase.firestore();
-debugger
-db.settings({timestampsInSnapshots: true});
-
-db.settings({timestampsInSnapshots: true});
-
-const collection = db.collection('prize_locations');
-
-collection.get().then(snapshot => {
-
-  snapshot.forEach(doc => {
-
-    console.log( doc.data().location );    
-    console.log( doc.data().prize_id );
-
-  });
-
-});
