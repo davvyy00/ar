@@ -18,6 +18,8 @@ var Common = (function() {
 
     const locations = [{ lat: 53.543909, long: -113.442837, uuid: 4 }];
 
+    const locationChangedCount = 0;
+
     makeFullScreen = () => {
         console.log('make full screen');
 
@@ -69,15 +71,15 @@ var Common = (function() {
             this.setCurrentUserLocation(coords);
             // Get the prizes within one kilometer of the user
             Services.getPrizesNearLocation(coords.latitude, coords.longitude, 1000, (resp) => {
-                console.log(coords)
-                console.log(resp)
                 this.addAllModelsToScene(resp);
+                countLocationChanged ++ 
+                this.setDebugContent(resp.length, currentUserLocation, countLocationChanged);
             })
         })
     }
 
     addAllModelsToScene = (data) => {
-        data.forEach((item)=>{
+        data.forEach((item) => {
             let location = item.data();
             this.addModelToScene(location.coordinates, configOne);
         })
@@ -86,20 +88,28 @@ var Common = (function() {
 
     addNewLocations = () => {
         const currCoords = this.currentUserLocation;
-      
+
         if (currCoords) {
             this.getUserLocation((newCoords) => {
                 const distance = this.calcDistanceBetweenGeopoints(currCoords.latitude, currCoords.longitude, newCoords.latitude, newCoords.longitude);
 
                 console.warn(`The user has moved ${distance} kms`);
 
-                if(distance > 1) {
+                if (distance > .01) {
                     // Update current coords
+                    this.setCurrentUserLocation(newCoords);
                     // get prizes from new location
+                    Services.getPrizesNearLocation(newCoords.latitude, newCoords.longitude, 1000, (resp) => {
+                        // Remove models from scene
+                        this.addAllModelsToScene(resp);
+                        //setDebugContent = (numLocations, location, countLocationChanged)
+                        countLocationChanged ++ 
+                        this.setDebugContent(resp.length, currentUserLocation, countLocationChanged);
+                    })
                 }
             })
         } else {
-           this.addInitialLocations();
+            this.addInitialLocations();
         }
 
     }
@@ -123,6 +133,23 @@ var Common = (function() {
     toRad = (Value) => {
         return Value * Math.PI / 180;
     }
+
+    setDebugContent = (numLocations, location, countLocationChanged) => {
+        let a, b, c;
+        a = document.querySelector('.num-locations');
+        b = document.querySelector('.curr-location');
+        c = document.querySelector('.count-location-changed');
+
+        a.innerHTML = `There are ${numLocations}`;
+        b.innerHTML = `The users last location was ${location.latitude} ${location.longitude}`;
+        a.innerHTML = `The user changed locations ${countLocationChanged}`;
+    }
+
+    /**<div class="debug-window">
+        <div class="num-locations"></div>
+        <div class="curr-location"></div>
+        <div class="count-location-changed"></div>
+    </div>**/
 
     return {
         makeFullScreen,
