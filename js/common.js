@@ -20,6 +20,8 @@ var Common = (function() {
 
     let locationChangedCount = 0;
 
+    let movedDistance = 0;
+
     makeFullScreen = () => {
         console.log('make full screen');
 
@@ -73,7 +75,7 @@ var Common = (function() {
             Services.getPrizesNearLocation(coords.latitude, coords.longitude, 1000, (resp) => {
                 this.addAllModelsToScene(resp);
                 locationChangedCount ++ 
-                this.setDebugContent(resp.length, currentUserLocation, locationChangedCount);
+                this.setDebugContent(resp.length, currentUserLocation, locationChangedCount, movedDistance);
             })
         })
     }
@@ -100,11 +102,10 @@ var Common = (function() {
                     this.setCurrentUserLocation(newCoords);
                     // get prizes from new location
                     Services.getPrizesNearLocation(newCoords.latitude, newCoords.longitude, 1000, (resp) => {
-                        // Remove models from scene
+                        // TODO Remove models from scene
                         this.addAllModelsToScene(resp);
-                        //setDebugContent = (numLocations, location, locationChangedCount)
                         locationChangedCount ++ 
-                        this.setDebugContent(resp.length, currentUserLocation, locationChangedCount);
+                        this.setDebugContent(resp.length, currentUserLocation, locationChangedCount, movedDistance);
                     })
                 }
             })
@@ -134,15 +135,17 @@ var Common = (function() {
         return Value * Math.PI / 180;
     }
 
-    setDebugContent = (numLocations, location, countLocationChanged) => {
+    setDebugContent = (numLocations, location, countLocationChanged, moved) => {
         let a, b, c;
         a = document.querySelector('.num-locations');
         b = document.querySelector('.curr-location');
         c = document.querySelector('.count-location-changed');
+        d = document.querySelector('.moved');
 
         a.innerHTML = `There are ${numLocations} prizes now`;
         b.innerHTML = `The users last location was ${location.latitude} ${location.longitude}`;
         c.innerHTML = `The user changed locations ${countLocationChanged}`;
+        d.innerHTML = `The user has moved ${movedDistance} kms`;
     }
 
     /**<div class="debug-window">
@@ -172,6 +175,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     // Call this every 20 seconds
     setInterval(() => {
-        //Common.addNewLocations()
+        Common.addNewLocations()
     }, 10000)
 });
