@@ -39,7 +39,7 @@ var Common = (function() {
         const icon = document.createElement('a-entity');
         icon.setAttribute('gps-entity-place', `latitude: ${location.latitude}; longitude: ${location.longitude}`);
         //icon.setAttribute('obj-model', config.asset);
-        icon.setAttribute('glft-model', config.asset);
+        icon.setAttribute('gltf-model', config.asset);
         //icon.setAttribute('uuid', location.uuid);
         icon.setAttribute('scale', config.scale);
         icon.setAttribute('clickhandler', '');
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     setTimeout(() => {
         Common.addInitialLocations();
-    }, 3000);
+    }, 5000);
 
     // Call this every 20 seconds
     setInterval(() => {
