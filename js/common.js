@@ -95,7 +95,9 @@ var Common = (function() {
 
                 console.warn(`The user has moved ${distance} kms`);
 
-                if (!distance && distance > .01) {
+                this.updateDistance(distance);
+
+                if (distance && distance > .05) {
                     // Update current coords
                     this.setCurrentUserLocation(newCoords);
                     // get prizes from new location
@@ -146,6 +148,12 @@ var Common = (function() {
         b.innerHTML = `The users last location was ${location.latitude} ${location.longitude}`;
         c.innerHTML = `The user changed locations ${countLocationChanged}`;
         d.innerHTML = `The user has moved ${moved} kms`;
+    }
+
+    updateDistance = (moved) => {
+        let a = document.querySelector('.moved');
+
+        a.innerHTML = `The user has moved ${moved} kms`;
     }
 
     /**<div class="debug-window">
