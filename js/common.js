@@ -89,7 +89,7 @@ var Common = (function() {
     }
 
     addNewLocations = () => {
-        const currCoords = this.currentUserLocation;
+        const currCoords = currentUserLocation;
 
         if (currCoords) {
             this.getUserLocation((newCoords) => {
@@ -144,7 +144,7 @@ var Common = (function() {
 
         prizes = document.querySelectorAll('#mugs');
 
-        a.innerHTML = `There are ${prizes} prizes now`;
+        a.innerHTML = `There are ${prizes.length} prizes now`;
         b.innerHTML = `The users last location was ${location.latitude} ${location.longitude}`;
         c.innerHTML = `The user changed locations ${countLocationChanged}`;
         d.innerHTML = `The user has moved ${movedDistance} kms`;
