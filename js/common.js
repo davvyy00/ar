@@ -142,7 +142,7 @@ var Common = (function() {
 
         a.innerHTML = `There are ${numLocations} prizes now`;
         b.innerHTML = `The users last location was ${location.latitude} ${location.longitude}`;
-        a.innerHTML = `The user changed locations ${countLocationChanged}`;
+        c.innerHTML = `The user changed locations ${countLocationChanged}`;
     }
 
     /**<div class="debug-window">
