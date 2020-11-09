@@ -37,7 +37,7 @@ var Common = (function() {
     addModelToScene = (location, config) => {
         const scene = document.querySelector('a-scene');
         const icon = document.createElement('a-entity');
-        icon.setAttribute('gps-entity-place', `latitude: ${location.lat}; longitude: ${location.long}`);
+        icon.setAttribute('gps-entity-place', `latitude: ${location.latitude}; longitude: ${location.longitude}`);
         //icon.setAttribute('obj-model', config.asset);
         icon.setAttribute('glft-model', config.asset);
         //icon.setAttribute('uuid', location.uuid);
