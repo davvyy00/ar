@@ -14,7 +14,7 @@ var Common = (function() {
     let currentUserLocation;
 
     //const configOne = { asset: 'obj: #bee-obj; mtl: #bee-mtl', scale: '10 10 10' };
-    const configOne = { asset: '#mug', scale: '.4 .4 .4' };
+    const configOne = { asset: '#mug', scale: '.04 .04 .04' };
 
     const locations = [{ lat: 53.543909, long: -113.442837, uuid: 4 }];
 
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     setTimeout(() => {
         Common.addInitialLocations();
-    }, 5000);
+    }, 3000);
 
     // Call this every 20 seconds
     setInterval(() => {
