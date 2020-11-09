@@ -140,7 +140,7 @@ var Common = (function() {
         b = document.querySelector('.curr-location');
         c = document.querySelector('.count-location-changed');
 
-        a.innerHTML = `There are ${numLocations}`;
+        a.innerHTML = `There are ${numLocations} prizes now`;
         b.innerHTML = `The users last location was ${location.latitude} ${location.longitude}`;
         a.innerHTML = `The user changed locations ${countLocationChanged}`;
     }
