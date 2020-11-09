@@ -79,7 +79,7 @@ var Common = (function() {
     addAllModelsToScene = (data) => {
         data.forEach((item)=>{
             let location = item.data();
-            this.addModelToScene(location, configOne);
+            this.addModelToScene(location.coordinates, configOne);
         })
 
     }
