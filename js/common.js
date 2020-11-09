@@ -20,8 +20,6 @@ var Common = (function() {
 
     let locationChangedCount = 0;
 
-    let movedDistance = 0;
-
     makeFullScreen = () => {
         console.log('make full screen');
 
@@ -75,7 +73,7 @@ var Common = (function() {
             // Get the prizes within one kilometer of the user
             Services.getPrizesNearLocation(coords.latitude, coords.longitude, 1000, (resp) => {
                 this.addAllModelsToScene(resp);
-                this.setDebugContent(resp.length, currentUserLocation, locationChangedCount, movedDistance);
+                this.setDebugContent(resp.length, currentUserLocation, locationChangedCount, 0);
             })
         })
     }
@@ -97,8 +95,6 @@ var Common = (function() {
 
                 console.warn(`The user has moved ${distance} kms`);
 
-                movedDistance = distance;
-
                 if (!distance && distance > .01) {
                     // Update current coords
                     this.setCurrentUserLocation(newCoords);
@@ -107,7 +103,7 @@ var Common = (function() {
                         // TODO Remove models from scene
                         this.addAllModelsToScene(resp);
                         locationChangedCount ++ 
-                        this.setDebugContent(resp.length, currentUserLocation, locationChangedCount, movedDistance);
+                        this.setDebugContent(resp.length, currentUserLocation, locationChangedCount, distance);
                     })
                 }
             })
