@@ -73,7 +73,7 @@ var Services = (function() {
 
 //Services.getLocations();
 
-//Services.addLocation({lat:53.449795,  long:-113.457133});
+//Services.addLocation({lat:53.539030,  long:  -113.418423});
 
 //Services.setPrizeClaimed("7mDbuaJ9C56vrrAoXG7U")
 
