@@ -13,7 +13,8 @@ var Common = (function() {
 
     let currentUserLocation;
 
-    const configOne = { asset: 'obj: #bee-obj; mtl: #bee-mtl', scale: '10 10 10' };
+    //const configOne = { asset: 'obj: #bee-obj; mtl: #bee-mtl', scale: '10 10 10' };
+    const configOne = { asset: '#mug', scale: '.4 .4 .4' };
 
     const locations = [{ lat: 53.543909, long: -113.442837, uuid: 4 }];
 
@@ -37,7 +38,8 @@ var Common = (function() {
         const scene = document.querySelector('a-scene');
         const icon = document.createElement('a-entity');
         icon.setAttribute('gps-entity-place', `latitude: ${location.lat}; longitude: ${location.long}`);
-        icon.setAttribute('obj-model', config.asset);
+        //icon.setAttribute('obj-model', config.asset);
+        icon.setAttribute('glft-model', config.asset);
         //icon.setAttribute('uuid', location.uuid);
         icon.setAttribute('scale', config.scale);
         icon.setAttribute('clickhandler', '');
@@ -69,10 +71,17 @@ var Common = (function() {
             Services.getPrizesNearLocation(coords.latitude, coords.longitude, 1000, (resp) => {
                 console.log(coords)
                 console.log(resp)
-                // add models to scene func
-                this.addModelToScene(location, configOne);
+                this.addAllModelsToScene(resp);
             })
         })
+    }
+
+    addAllModelsToScene = (data) => {
+        data.forEach((item)=>{
+            let location = item.data();
+            this.addModelToScene(location, configOne);
+        })
+
     }
 
     addNewLocations = () => {
