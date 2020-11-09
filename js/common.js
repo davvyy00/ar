@@ -48,6 +48,7 @@ var Common = (function() {
         icon.setAttribute('scale', config.scale);
         icon.setAttribute('clickhandler', '');
         icon.setAttribute('animation-mixer', '');
+        icon.setAttribute('class', 'mug');
 
         scene.appendChild(icon);
     }
@@ -74,7 +75,6 @@ var Common = (function() {
             // Get the prizes within one kilometer of the user
             Services.getPrizesNearLocation(coords.latitude, coords.longitude, 1000, (resp) => {
                 this.addAllModelsToScene(resp);
-                locationChangedCount ++ 
                 this.setDebugContent(resp.length, currentUserLocation, locationChangedCount, movedDistance);
             })
         })
@@ -96,6 +96,8 @@ var Common = (function() {
                 const distance = this.calcDistanceBetweenGeopoints(currCoords.latitude, currCoords.longitude, newCoords.latitude, newCoords.longitude);
 
                 console.warn(`The user has moved ${distance} kms`);
+
+                movedDistance = distance;
 
                 if (!distance && distance > .01) {
                     // Update current coords
@@ -142,7 +144,7 @@ var Common = (function() {
         c = document.querySelector('.count-location-changed');
         d = document.querySelector('.moved');
 
-        prizes = document.querySelectorAll('#mugs');
+        prizes = document.querySelectorAll('.mug');
 
         a.innerHTML = `There are ${prizes.length} prizes now`;
         b.innerHTML = `The users last location was ${location.latitude} ${location.longitude}`;
