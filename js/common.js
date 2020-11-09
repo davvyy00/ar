@@ -51,7 +51,7 @@ var Common = (function() {
     }
 
     setCurrentUserLocation = (coords) => {
-        this.currentUserLocation = coords;
+        currentUserLocation = coords;
     }
 
     getUserLocation = (onSuccess) => {
