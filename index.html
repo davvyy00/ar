@@ -22,18 +22,6 @@
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/3.3.0/aframe/build/aframe-ar-nft.js"></script>
     <script src="js/common.js"></script>
-    <script type="text/javascript">
-    // Click event for a 3d model, or any object inside the scene
-    AFRAME.registerComponent('clickhandler', {
-        init: function() {
-            this.el.addEventListener('click', () => {
-                console.log(this.el);
-                const distance = this.el.getAttribute('distancemsg')
-                alert(`You are ${distance} from the bee`);
-            });
-        }
-    });
-    </script>
 </head>
 
 <body style="margin: 0; overflow: hidden;">
@@ -56,7 +44,7 @@
         <div class="count-location-changed"></div>
         <div class="moved"></div>
     </div>
-    <div class="close-btn" onclick="Common.goToExitPage()">CLOSE</div>
+    <div class="close-btn" onclick="Common.closeApp()">CLOSE</div>
 </body>
 
 </html>

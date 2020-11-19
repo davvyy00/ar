@@ -1,3 +1,14 @@
+// Click event for a 3d model, or any object inside the scene
+AFRAME.registerComponent('clickhandler', {
+    init: function() {
+        this.el.addEventListener('click', () => {
+            console.log(this.el);
+            const distance = this.el.getAttribute('distancemsg')
+            alert(`You are ${distance} from the bee`);
+        });
+    }
+});
+
 var Common = (function() {
 
     let currentUserLocation;
@@ -78,7 +89,7 @@ var Common = (function() {
     removeModelsFromScene = () => {
         const beeModels = document.querySelectorAll('.mug') || [];
 
-        beeModels.forEach((item)=>{
+        beeModels.forEach((item) => {
             item.remove();
         })
     }
@@ -103,7 +114,7 @@ var Common = (function() {
                     Services.getPrizesNearLocation(newCoords.latitude, newCoords.longitude, 0.5, (resp) => {
                         // TODO Remove models from scene
                         this.addAllModelsToScene(resp);
-                        locationChangedCount ++ 
+                        locationChangedCount++
                         this.setDebugContent(resp.length, currentUserLocation, locationChangedCount, distance);
                     })
                 }
@@ -155,12 +166,12 @@ var Common = (function() {
         a.innerHTML = `The user has moved ${moved} kms`;
     }
 
-    goToExitPage = ()=>{
-        window.open("exit-page.html","_self");
+    goToExitPage = () => {
+        window.open("exit-page.html", "_self");
     }
 
-    closeApp = ()=> {
-        var customWindow = window.open('', '_blank', '');
+    closeApp = () => {
+        var customWindow = window.open("", "_self", "");
         customWindow.close();
     }
 
