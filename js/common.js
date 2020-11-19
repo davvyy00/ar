@@ -166,24 +166,13 @@ var Common = (function() {
         a.innerHTML = `The user has moved ${moved} kms`;
     }
 
-    goToExitPage = () => {
-        window.open("exit-page.html", "_self");
-    }
-
-    closeApp = () => {
-        var customWindow = window.open("", "_self", "");
-        customWindow.close();
-    }
-
     return {
         makeFullScreen,
         addModelToScene,
         locations,
         configOne,
         addInitialLocations,
-        addNewLocations,
-        closeApp,
-        goToExitPage
+        addNewLocations
     };
 })();
 
