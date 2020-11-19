@@ -167,8 +167,11 @@ var Common = (function() {
     }
 
     closeApp = ()=> {
-        window.open('', '_self', '');
-        window.close();
+        window.open("exit-page.html","_self");
+
+        setTimeout(()=>{
+            window.close();
+        }, 5000);
     }
 
     return {
