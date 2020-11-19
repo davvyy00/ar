@@ -93,8 +93,8 @@ var Common = (function() {
     addAllModelsToScene = (data) => {
         data.forEach((item, index) => {
             let location = item.data();
-            item.beeId = location.id;
-            locations.push(item.data())
+            let id = {id: item.id};
+            locations.push(Object.assign(item.data(), id));
             this.addModelToScene(location.coordinates, configOne, index);
         })
 
