@@ -176,7 +176,8 @@ var Common = (function() {
         locations,
         configOne,
         addInitialLocations,
-        addNewLocations
+        addNewLocations,
+        closeApp
     };
 })();
 
