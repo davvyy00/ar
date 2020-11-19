@@ -71,7 +71,7 @@ var Common = (function() {
             // Set the iniital location of the user
             this.setCurrentUserLocation(coords);
             // Get the prizes within one kilometer of the user
-            Services.getPrizesNearLocation(coords.latitude, coords.longitude, 1000, (resp) => {
+            Services.getPrizesNearLocation(coords.latitude, coords.longitude, 0.5, (resp) => {
                 this.addAllModelsToScene(resp);
                 this.setDebugContent(resp.length, currentUserLocation, locationChangedCount, 0);
             })
@@ -86,6 +86,14 @@ var Common = (function() {
 
     }
 
+    removeModelsFromScene = () => {
+        const beeModels = document.querySelectorAll('.mug') || [];
+
+        beeModels.forEach((item)=>{
+            item.remove();
+        })
+    }
+
     addNewLocations = () => {
         const currCoords = currentUserLocation;
 
@@ -98,10 +106,12 @@ var Common = (function() {
                 this.updateDistance(distance);
 
                 if (distance && distance > .05) {
+                    // Remove the old locations before adding new ones
+                    this.removeModelsFromScene();
                     // Update current coords
                     this.setCurrentUserLocation(newCoords);
                     // get prizes from new location
-                    Services.getPrizesNearLocation(newCoords.latitude, newCoords.longitude, 1000, (resp) => {
+                    Services.getPrizesNearLocation(newCoords.latitude, newCoords.longitude, 0.5, (resp) => {
                         // TODO Remove models from scene
                         this.addAllModelsToScene(resp);
                         locationChangedCount ++ 
@@ -155,12 +165,6 @@ var Common = (function() {
 
         a.innerHTML = `The user has moved ${moved} kms`;
     }
-
-    /**<div class="debug-window">
-        <div class="num-locations"></div>
-        <div class="curr-location"></div>
-        <div class="count-location-changed"></div>
-    </div>**/
 
     return {
         makeFullScreen,
