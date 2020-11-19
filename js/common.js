@@ -167,7 +167,8 @@ var Common = (function() {
     }
 
     closeApp = ()=> {
-        window.close('','_parent','');
+        window.open('', '_self', '');
+        window.close();
     }
 
     return {
