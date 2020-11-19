@@ -41,10 +41,13 @@ var Common = (function() {
     }
 
     setCurrentBee = (id)=> {
-        locations.forEach((item)=>{
-            console.log(item);
-            console.log(id);
-        })
+        currentBee = locations[Number(id)];
+
+        console.log('THE current bee is', currentBee)
+    }
+
+    getCurrentBee = ()=> {
+        return currentBee;
     }
 
     addModelToScene = (location, config, index) => {

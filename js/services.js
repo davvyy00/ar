@@ -20,10 +20,10 @@ var Services = (function() {
         });
     }
 
-    let setPrizeClaimed = (id) => {
+    let setPrizeClaimed = (id, email) => {
         const collection = db.collection('prize_locations');
 
-        collection.doc(id).update({ claimed_by: 'test' });
+        collection.doc(id).update({ claimed_by: email });
     }
 
     let addLocation = (data) => {
