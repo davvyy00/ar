@@ -5,6 +5,8 @@ AFRAME.registerComponent('clickhandler', {
             console.log(this.el);
             const distance = this.el.getAttribute('distancemsg')
             alert(`You are ${distance} from the bee`);
+
+            Common.toggleClaimPrizeModal();
         });
     }
 });
@@ -166,13 +168,26 @@ var Common = (function() {
         a.innerHTML = `The user has moved ${moved} kms`;
     }
 
+    toggleClaimPrizeModal = ()=> {
+        const modal = document.querySelector('.claim-prize-modal');
+
+        if(modal.classList.contains('closed')) {
+            modal.classList.remove('closed');
+            modal.classList.add('open');
+        } else {
+           modal.classList.remove('open');
+           modal.classList.add('closed'); 
+        }
+    }
+
     return {
         makeFullScreen,
         addModelToScene,
         locations,
         configOne,
         addInitialLocations,
-        addNewLocations
+        addNewLocations,
+        toggleClaimPrizeModal
     };
 })();
 
