@@ -6,3 +6,15 @@
     background-color: white;
     width: 100vw;
 }
+
+.close-btn {
+	position: fixed;
+	width: 60vw;
+	left: 20vw;
+	background-color: #4990F7;
+	color: white;
+	text-align: center;
+	border-radius: 7px;
+	height: 25px;
+	line-height: 25px;
+}

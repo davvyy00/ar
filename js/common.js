@@ -166,6 +166,10 @@ var Common = (function() {
         a.innerHTML = `The user has moved ${moved} kms`;
     }
 
+    closeApp = ()=> {
+        window.close('','_parent','');
+    }
+
     return {
         makeFullScreen,
         addModelToScene,
