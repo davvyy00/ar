@@ -37,3 +37,8 @@
 .claim-prize-modal.open {
 	left: 0;
 }
+
+/* claimed prize modal */
+.modal-close {
+	margin-top: 100px;
+}

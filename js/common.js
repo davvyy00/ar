@@ -5,7 +5,7 @@ AFRAME.registerComponent('clickhandler', {
             console.log(this.el);
             const distance = this.el.getAttribute('distancemsg')
             alert(`You are ${distance} from the bee`);
-
+            Common.setCurrentBee(this.el.id);
             Common.toggleClaimPrizeModal();
         });
     }
@@ -18,7 +18,9 @@ var Common = (function() {
     //const configOne = { asset: 'obj: #bee-obj; mtl: #bee-mtl', scale: '10 10 10' };
     const configOne = { asset: '#mug', scale: '.04 .04 .04' };
 
-    const locations = [{ lat: 53.543909, long: -113.442837, uuid: 4 }];
+    const locations = [];
+
+    let currentBee;
 
     let locationChangedCount = 0;
 
@@ -38,7 +40,14 @@ var Common = (function() {
         }
     }
 
-    addModelToScene = (location, config) => {
+    setCurrentBee = (id)=> {
+        locations.forEach((item)=>{
+            console.log(item);
+            console.log(id);
+        })
+    }
+
+    addModelToScene = (location, config, index) => {
         const scene = document.querySelector('a-scene');
         const icon = document.createElement('a-entity');
         icon.setAttribute('gps-entity-place', `latitude: ${location.latitude}; longitude: ${location.longitude}`);
@@ -49,6 +58,7 @@ var Common = (function() {
         icon.setAttribute('clickhandler', '');
         icon.setAttribute('animation-mixer', '');
         icon.setAttribute('class', 'mug');
+        icon.setAttribute('id', index);
 
         scene.appendChild(icon);
     }
@@ -81,15 +91,18 @@ var Common = (function() {
     }
 
     addAllModelsToScene = (data) => {
-        data.forEach((item) => {
+        data.forEach((item, index) => {
             let location = item.data();
-            this.addModelToScene(location.coordinates, configOne);
+            locations.push(item.data())
+            this.addModelToScene(location.coordinates, configOne, index);
         })
 
     }
 
     removeModelsFromScene = () => {
         const beeModels = document.querySelectorAll('.mug') || [];
+
+        locations = [];
 
         beeModels.forEach((item) => {
             item.remove();
@@ -187,7 +200,8 @@ var Common = (function() {
         configOne,
         addInitialLocations,
         addNewLocations,
-        toggleClaimPrizeModal
+        toggleClaimPrizeModal,
+        setCurrentBee
     };
 })();
 
