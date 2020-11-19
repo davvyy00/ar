@@ -160,9 +160,8 @@ var Common = (function() {
     }
 
     closeApp = ()=> {
-        setTimeout(()=>{
-            window.close();
-        }, 5000);
+        var customWindow = window.open('', '_blank', '');
+        customWindow.close();
     }
 
     return {
