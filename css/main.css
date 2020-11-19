@@ -27,6 +27,7 @@
 	height: 100vh;
 	z-index: 999999;
 	background-color: white;
+	bottom: 0px;
 }
 
 .claim-prize-modal.closed {
@@ -34,5 +35,5 @@
 }
 
 .claim-prize-modal.open {
-	left: -100vw;
+	left: 0;
 }

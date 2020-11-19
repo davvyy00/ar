@@ -45,7 +45,13 @@
         <div class="moved"></div>
     </div>
     <div class="close-btn" onclick="Common.closeApp()">CLOSE</div>
-    <div class="claim-prize-modal closed"></div>
+    <div class="claim-prize-modal closed">
+        <div class="modal-close" onclick="Common.toggleClaimPrizeModal()">Close</div>
+        <div class="prize-text">You won a $100 cash</div>
+        <label for="email">Enter your email</label>
+        <input type="email" id="email" name="email">
+        <button>SUBMIT<button>
+    </div>
 </body>
 
 </html>
