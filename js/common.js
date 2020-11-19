@@ -166,9 +166,11 @@ var Common = (function() {
         a.innerHTML = `The user has moved ${moved} kms`;
     }
 
-    closeApp = ()=> {
+    goToExitPage = ()=>{
         window.open("exit-page.html","_self");
+    }
 
+    closeApp = ()=> {
         setTimeout(()=>{
             window.close();
         }, 5000);
@@ -181,7 +183,8 @@ var Common = (function() {
         configOne,
         addInitialLocations,
         addNewLocations,
-        closeApp
+        closeApp,
+        goToExitPage
     };
 })();
 
