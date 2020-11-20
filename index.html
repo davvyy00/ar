@@ -22,6 +22,19 @@
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/3.3.0/aframe/build/aframe-ar-nft.js"></script>
     <script src="js/common.js"></script>
+    <script type="text/javascript">
+    // Click event for a 3d model, or any object inside the scene
+    AFRAME.registerComponent('clickhandler', {
+        init: function() {
+            this.el.addEventListener('click', () => {
+                console.log(this.el);
+                const distance = this.el.getAttribute('distancemsg')
+                Common.setCurrentBee(this.el.id);
+                Common.toggleModal('.claim-prize-modal');
+            });
+        }
+    });
+    </script>
 </head>
 
 <body style="margin: 0; overflow: hidden;">
@@ -55,7 +68,7 @@
     <div class="landing-modal modal open">
         <div class="landing-modal-header blue-text">THE QUEST FOR THE <span class="yellow-text">BEEZ</span></div>
         <div class="legal-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
-        <div class="continue-btn" onclick="Common.agreeToLegalText()">START PLAYING</div>
+        <div class="continue-btn btn" onclick="Common.agreeToLegalText()">START PLAYING</div>
     </div>
 </body>
 

@@ -65,9 +65,12 @@ html {
 	position: fixed;
 	width: 90vw;
 	left: 5vw;
-	top: calc((100vh - 200px) / 2);
+	top: calc((100vh - 400px) / 2);
 	height: 300px;
 	z-index: 999999;
+}
+
+.landing-modal-header {
 	padding: 15px;
 	font-size: 25px;
 }

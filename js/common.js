@@ -1,16 +1,3 @@
-// Click event for a 3d model, or any object inside the scene
-AFRAME.registerComponent('clickhandler', {
-    init: function() {
-        this.el.addEventListener('click', () => {
-            console.log(this.el);
-            const distance = this.el.getAttribute('distancemsg')
-            alert(`You are ${distance} from the bee`);
-            Common.setCurrentBee(this.el.id);
-            Common.toggleModal('.claim-prize-modal');
-        });
-    }
-});
-
 var Common = (function() {
 
     let currentUserLocation;
