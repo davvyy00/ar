@@ -68,21 +68,27 @@ html {
 	top: calc((100vh - 200px) / 2);
 	height: 300px;
 	z-index: 999999;
+	padding: 15px;
+	font-size: 25px;
 }
 
 .landing-modal .legal-text {
 	text-align: center;
+	padding: 15px;
 }
 
 .landing-modal .continue-btn {
-	height: 25px;
-	line-height: 25px;
-	text-align: center;
 	width: 200px;
-	display: table;
-  	margin: 0 auto;
-  	border-radius: 7px;
-  	background-color: var(--main-blue-color);
+}
+
+.btn {
+	height: 35px;
+    line-height: 35px;
+    text-align: center;
+    display: table;
+    margin: 0 auto;
+    border-radius: 10px;
+    background-color: var(--main-blue-color);
   	color: white;
 }
 
