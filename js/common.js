@@ -24,7 +24,7 @@ var Common = (function() {
 
     let locationChangedCount = 0;
 
-    makeFullScreen = () => {
+    toggleFullScreen = () => {
         console.log('make full screen');
 
         var doc = window.document;
@@ -197,15 +197,21 @@ var Common = (function() {
         }
     }
 
+    agreeToLegalText = ()=>{
+        this.toggleModal('.landing-modal');
+        this.toggleFullScreen();
+    }
+
     return {
-        makeFullScreen,
+        toggleFullScreen,
         addModelToScene,
         locations,
         configOne,
         addInitialLocations,
         addNewLocations,
         toggleModal,
-        setCurrentBee
+        setCurrentBee,
+        agreeToLegalText
     };
 })();
 
