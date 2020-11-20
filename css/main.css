@@ -1,6 +1,12 @@
 :root {
   --main-blue-color: #5C9FD2;
   --main-yellow-color: #E8D31F;
+  /* Text color */
+  --main-text-color: #838383;
+}
+
+html {
+	color: var(--main-text-color);
 }
 
 .yellow-text {
@@ -65,7 +71,6 @@
 }
 
 .landing-modal .legal-text {
-	margin-top: 30vh;
 	text-align: center;
 }
 
@@ -84,5 +89,4 @@
 .modal {
 	background-color: white;
 	border-radius: 10px;
-	padding: 15px;
 }
