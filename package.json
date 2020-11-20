@@ -1,0 +1,23 @@
+{
+  "name": "ar",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davvyy00/ar.git"
+  },
+  "author": "david keane <davekeano@hotmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davvyy00/ar/issues"
+  },
+  "homepage": "https://github.com/davvyy00/ar#readme",
+  "devDependencies": {
+    "uglify-es": "^3.3.9",
+    "uglify-js": "^3.11.6"
+  }
+}

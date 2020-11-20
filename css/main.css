@@ -1,3 +1,16 @@
+:root {
+  --main-blue-color: #5C9FD2;
+  --main-yellow-color: #E8D31F;
+}
+
+.yellow-text {
+	color: var(--main-yellow-color);
+}
+
+.blue-text {
+	color: var(--main-blue-color);
+}
+
 .debug-window {
 	position: fixed;
     bottom: 0px;
@@ -31,11 +44,11 @@
 }
 
 .closed {
-	left: -100vw;
+	display: none;
 }
 
 .open {
-	left: 0;
+	display: block;
 }
 
 .claim-prize-modal .modal-close {
@@ -44,11 +57,11 @@
 
 .landing-modal {
 	position: fixed;
-	width: 100vw;
-	height: 100vh;
+	width: 90vw;
+	left: 5vw;
+	top: calc((100vh - 300px) / 2);
+	height: 300px;
 	z-index: 999999;
-	background-color: blue;
-	bottom: 0px;
 }
 
 .landing-modal .legal-text {
@@ -62,4 +75,9 @@
 	text-align: center;
 	width: 40vw;
 	margin-left: 30vw;
+}
+
+.modal {
+	background-color: white;
+	border-radius: 10px;
 }
