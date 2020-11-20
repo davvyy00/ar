@@ -65,8 +65,8 @@ html {
 	position: fixed;
 	width: 90vw;
 	left: 5vw;
-	top: calc((100vh - 400px) / 2);
-	height: 300px;
+	top: calc((100vh - 500px) / 2);
+	height: 400px;
 	z-index: 999999;
 }
 
@@ -76,8 +76,7 @@ html {
 }
 
 .landing-modal .legal-text {
-	text-align: center;
-	padding: 15px;
+	padding: 0px 15px 15px 15px;
 }
 
 .landing-modal .continue-btn {
