@@ -30,15 +30,36 @@
 	bottom: 0px;
 }
 
-.claim-prize-modal.closed {
+.closed {
 	left: -100vw;
 }
 
-.claim-prize-modal.open {
+.open {
 	left: 0;
 }
 
-/* claimed prize modal */
-.modal-close {
+.claim-prize-modal .modal-close {
 	margin-top: 100px;
+}
+
+.landing-modal {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	z-index: 999999;
+	background-color: blue;
+	bottom: 0px;
+}
+
+.landing-modal .legal-text {
+	margin-top: 30vh;
+	text-align: center;
+}
+
+.landing-modal .continue-btn {
+	height: 25px;
+	line-height: 25px;
+	text-align: center;
+	width: 40vw;
+	margin-left: 30vw;
 }

@@ -6,7 +6,7 @@ AFRAME.registerComponent('clickhandler', {
             const distance = this.el.getAttribute('distancemsg')
             alert(`You are ${distance} from the bee`);
             Common.setCurrentBee(this.el.id);
-            Common.toggleClaimPrizeModal();
+            Common.toggleModal('.claim-prize-modal');
         });
     }
 });
@@ -185,8 +185,8 @@ var Common = (function() {
         a.innerHTML = `The user has moved ${moved} kms`;
     }
 
-    toggleClaimPrizeModal = ()=> {
-        const modal = document.querySelector('.claim-prize-modal');
+    toggleModal = (query)=> {
+        const modal = document.querySelector(query);
 
         if(modal.classList.contains('closed')) {
             modal.classList.remove('closed');
@@ -204,7 +204,7 @@ var Common = (function() {
         configOne,
         addInitialLocations,
         addNewLocations,
-        toggleClaimPrizeModal,
+        toggleModal,
         setCurrentBee
     };
 })();
