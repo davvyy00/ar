@@ -1,24 +1,24 @@
 :root {
-  --main-blue-color: #5C9FD2;
-  --main-yellow-color: #E8D31F;
-  /* Text color */
-  --main-text-color: #838383;
+    --main-blue-color: #5C9FD2;
+    --main-yellow-color: #E8D31F;
+    /* Text color */
+    --main-text-color: #838383;
 }
 
 html {
-	color: var(--main-text-color);
+    color: var(--main-text-color);
 }
 
 .yellow-text {
-	color: var(--main-yellow-color);
+    color: var(--main-yellow-color);
 }
 
 .blue-text {
-	color: var(--main-blue-color);
+    color: var(--main-blue-color);
 }
 
 .debug-window {
-	position: fixed;
+    position: fixed;
     bottom: 0px;
     left: 0px;
     height: 100px;
@@ -27,86 +27,114 @@ html {
 }
 
 .close-btn {
-	position: fixed;
-	width: 60vw;
-	left: 20vw;
-	background-color: #4990F7;
-	color: white;
-	text-align: center;
-	border-radius: 7px;
-	height: 25px;
-	line-height: 25px;
-	bottom: 105px;
-	display: none;
+    position: fixed;
+    width: 60vw;
+    left: 20vw;
+    background-color: #4990F7;
+    color: white;
+    text-align: center;
+    border-radius: 7px;
+    height: 25px;
+    line-height: 25px;
+    bottom: 105px;
+    display: none;
 }
 
 .claim-prize-modal {
-	position: fixed;
-	width: 100vw;
-	height: 100vh;
-	z-index: 999999;
-	background-color: white;
-	bottom: 0px;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 999999;
+    background-color: white;
+    bottom: 0px;
 }
 
 .closed {
-	display: none;
+    display: none;
 }
 
 .open {
-	display: block;
+    display: block;
 }
 
 .claim-prize-modal .modal-close {
-	margin-top: 100px;
+    margin-top: 100px;
 }
 
 .landing-modal {
-	position: fixed;
-	width: 90vw;
-	left: 5vw;
-	top: calc((100vh - 500px) / 2);
-	height: 400px;
-	z-index: 999999;
+    position: fixed;
+    width: 90vw;
+    left: 5vw;
+    top: calc((100vh - 500px) / 2);
+    height: 400px;
+    z-index: 999999;
 }
 
 .landing-modal-header {
-	padding: 15px;
-	font-size: 25px;
+    padding: 15px;
+    font-size: 25px;
 }
 
 .landing-modal .legal-text {
-	padding: 0px 15px 15px 15px;
+    padding: 0px 15px 15px 15px;
 }
 
 .landing-modal .continue-btn {
-	width: 200px;
+    width: 200px;
 }
 
 .btn {
-	height: 35px;
+    height: 35px;
     line-height: 35px;
     text-align: center;
     display: table;
     margin: 0 auto;
     border-radius: 10px;
     background-color: var(--main-blue-color);
-  	color: white;
+    color: white;
 }
 
 .modal {
-	background-color: white;
-	border-radius: 10px;
+    background-color: white;
+    border-radius: 10px;
 }
 
-@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
-  html {
-    transform: rotate(-90deg);
-    transform-origin: left top;
-    width: 100vh;
-    overflow-x: hidden;
-    position: absolute;
-    top: 100%;
-    left: 0;
-  }
+#container {
+    display: block;
 }
+
+@media only screen and (orientation:portrait) {
+
+    #container {
+
+        height: 100vw;
+
+        -webkit-transform: rotate(90deg);
+
+        -moz-transform: rotate(90deg);
+
+        -o-transform: rotate(90deg);
+
+        -ms-transform: rotate(90deg);
+
+        transform: rotate(90deg);
+
+    }
+
+}
+
+@media only screen and (orientation:landscape) {
+
+    #container {
+
+        -webkit-transform: rotate(0deg);
+
+        -moz-transform: rotate(0deg);
+
+        -o-transform: rotate(0deg);
+
+        -ms-transform: rotate(0deg);
+
+        transform: rotate(0deg);
+
+    }
