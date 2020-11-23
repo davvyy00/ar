@@ -99,7 +99,6 @@ html {
     border-radius: 10px;
 }
 
-
 @media screen and (orientation:landscape) { 
 	.debug-window {
 		display: none;
