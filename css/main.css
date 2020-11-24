@@ -24,6 +24,7 @@ html {
     height: 100px;
     background-color: white;
     width: 100vw;
+    visibility: hidden;
 }
 
 .close-btn {

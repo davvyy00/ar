@@ -194,7 +194,7 @@ var Common = (function() {
 
     agreeToLegalText = () => {
         this.toggleModal('.landing-modal');
-        this.toggleFullScreen();
+        //this.toggleFullScreen();
     }
 
     submitPrizeForm = () => {
