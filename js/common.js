@@ -256,6 +256,14 @@ var Common = (function() {
         errorLabel.innerHTML = errorMsg;
     }
 
+    reloadModels = () => {
+        this.removeModelsFromScene();
+
+        locations.forEach((location, index)=>{
+            this.addModelToScene(location , configOne, index);
+        })
+    }
+
     return {
         toggleFullScreen,
         addModelToScene,
@@ -266,7 +274,8 @@ var Common = (function() {
         toggleModal,
         setCurrentBee,
         agreeToLegalText,
-        submitPrizeForm
+        submitPrizeForm,
+        reloadModels
     };
 })();
 
@@ -283,4 +292,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
     setInterval(() => {
         Common.addNewLocations()
     }, 10000)
+});
+
+window.addEventListener('orientationchange', function() {
+    Common.reloadModels();
 });
