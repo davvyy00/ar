@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/davvyy00/ar#readme",
   "devDependencies": {
+    "javascript-obfuscator": "^2.9.4",
     "uglify-es": "^3.3.9",
     "uglify-js": "^3.11.6"
   }
