@@ -34,7 +34,14 @@ var result2 = JavaScriptObfuscator.obfuscate(services, options);
 //console.log(result);
 console.log(result.getObfuscatedCode());
 
-fs.writeFile("output.min.js", result.getObfuscatedCode() + result2.getObfuscatedCode(), function(err) {
+fs.writeFile("common.min.js", result.getObfuscatedCode(), function(err) {
+    if (err) {
+        console.log(err);
+    } else {
+        console.log("File was successfully saved.");
+    }
+});
+fs.writeFile("services.min.js", result2.getObfuscatedCode(), function(err) {
     if (err) {
         console.log(err);
     } else {
