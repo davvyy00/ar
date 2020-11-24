@@ -262,7 +262,7 @@ var Common = (function() {
         this.removeModelsFromScene(false);
 
         locations.forEach((location, index)=>{
-            this.addModelToScene(location , configOne, index);
+            this.addModelToScene(location.coordinates, configOne, index);
         })
     }
 
