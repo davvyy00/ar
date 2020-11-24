@@ -34,6 +34,17 @@
             });
         }
     });
+    // create atToolkitContext
+    arToolkitContext = new THREEx.ArToolkitContext({
+        cameraParametersUrl: 'data/camera_para.dat',
+        detectionMode: 'mono'
+    });
+
+    // copy projection matrix to camera when initialization complete
+    arToolkitContext.init( function onCompleted(){
+        camera.projectionMatrix.copy( arToolkitContext.getProjectionMatrix() );
+    });
+
     </script>
 </head>
 
