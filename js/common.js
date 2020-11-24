@@ -197,7 +197,7 @@ var Common = (function() {
 
     submitPrizeForm = () => {
         const formData = document.querySelectorAll('form.prize-form input');
-        let formIsValid;
+        let formIsValid, email;
 
         // Validate form 
         formIsValid = this.validatePrizeForm(formData);
@@ -205,14 +205,19 @@ var Common = (function() {
         // Send email ? what action to take after submitting form
         formData.forEach((item)=>{
             console.log(`${item.id} ${item.value}`)
+            if(item.id === 'email') {
+                email = item.email;
+            }
         })
 
-        // TODO find out how prize is claimed, do i need to send email?
+        // TODO if form is valid sent request to freshdesk by email
         if(formIsValid) {
             this.toggleModal('.claim-prize-modal');
 
             setTimeout(()=>{
                 this.setPrizeId();
+                // TODO test
+                //Services.setPrizeClaimed(currentBee.id, email);
                 this.toggleModal('.confirmation-modal')
             }, 1000)
         }
