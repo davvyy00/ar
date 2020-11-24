@@ -27,8 +27,11 @@ var options = {
 };
 
 //get a reference to the minified version of file-1.js, file-2.js and file-3.js
-var result = JavaScriptObfuscator.obfuscate(common, options);
-var result2 = JavaScriptObfuscator.obfuscate(services, options);
+//var result = JavaScriptObfuscator.obfuscate(common, options);
+//var result2 = JavaScriptObfuscator.obfuscate(services, options);
+
+var result = JavaScriptObfuscator.obfuscate(common);
+var result2 = JavaScriptObfuscator.obfuscate(services);
 
 //view the output
 //console.log(result);
