@@ -20,7 +20,7 @@ var Services = (function() {
         });
     }
 
-    let setPrizeClaimed = (id, email) => {
+    let setPrizeClaimed = (id, email, name) => {
         const collection = db.collection('prize_locations');
 
         collection.doc(id).update({ claimed_by: email });

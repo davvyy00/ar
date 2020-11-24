@@ -27,13 +27,19 @@ var Common = (function() {
         }
     }
 
-    setCurrentBee = (id)=> {
+    setCurrentBee = (id) => {
         currentBee = locations[Number(id)];
 
         console.log('THE current bee is', currentBee)
     }
 
-    getCurrentBee = ()=> {
+    setPrizeId = () => {
+        let text = document.querySelector('.confirmation-modal .prize-id');
+
+        text.innerHTML = currentBee.id;
+    }
+
+    getCurrentBee = () => {
         return currentBee;
     }
 
@@ -83,7 +89,7 @@ var Common = (function() {
     addAllModelsToScene = (data) => {
         data.forEach((item, index) => {
             let location = item.data();
-            let id = {id: item.id};
+            let id = { id: item.id };
             locations.push(Object.assign(item.data(), id));
             this.addModelToScene(location.coordinates, configOne, index);
         })
@@ -172,21 +178,77 @@ var Common = (function() {
         a.innerHTML = `The user has moved ${moved} kms`;
     }
 
-    toggleModal = (query)=> {
+    toggleModal = (query) => {
         const modal = document.querySelector(query);
 
-        if(modal.classList.contains('closed')) {
+        if (modal.classList.contains('closed')) {
             modal.classList.remove('closed');
             modal.classList.add('open');
         } else {
-           modal.classList.remove('open');
-           modal.classList.add('closed'); 
+            modal.classList.remove('open');
+            modal.classList.add('closed');
         }
     }
 
-    agreeToLegalText = ()=>{
+    agreeToLegalText = () => {
         this.toggleModal('.landing-modal');
         this.toggleFullScreen();
+    }
+
+    submitPrizeForm = () => {
+        const formData = document.querySelectorAll('form.prize-form input');
+        let formIsValid;
+
+        // Validate form 
+        formIsValid = this.validatePrizeForm(formData);
+        // Submit after validation
+        // Send email ? what action to take after submitting form
+        formData.forEach((item)=>{
+            console.log(`${item.id} ${item.value}`)
+        })
+
+        // TODO find out how prize is claimed, do i need to send email?
+        if(formIsValid) {
+            this.toggleModal('.claim-prize-modal');
+
+            setTimeout(()=>{
+                this.setPrizeId();
+                this.toggleModal('.confirmation-modal')
+            }, 1000)
+        }
+    }
+
+    validatePrizeForm = (inputs) => {
+        let isValid = true;
+        inputs.forEach((item)=>{
+            // Clear the message
+            this.setValidationErrorMsg(item, '')
+            if(item.id === 'name') {
+                if(!item.value) {
+                    this.setValidationErrorMsg(item, ' *Required')
+                    isValid = false;
+                }
+            } else if (item.id === 'email') {
+                if(!item.value) {
+                    this.setValidationErrorMsg(item, ' *Required')
+                    isValid = false
+                }
+            } else if (item.id === 'answer') {
+                if(item.value != 7) {
+                    // TODO use random questions
+                    this.setValidationErrorMsg(item, ' *Incorrect')
+                    isValid = false
+                }
+            } 
+        })
+
+        return isValid;
+    }
+
+    setValidationErrorMsg = (input, errorMsg)=> {
+        let errorLabel = document.querySelector(`form span#${input.id}`);
+
+        errorLabel.innerHTML = errorMsg;
     }
 
     return {
@@ -198,7 +260,8 @@ var Common = (function() {
         addNewLocations,
         toggleModal,
         setCurrentBee,
-        agreeToLegalText
+        agreeToLegalText,
+        submitPrizeForm
     };
 })();
 
