@@ -194,7 +194,8 @@ var Common = (function() {
 
     agreeToLegalText = () => {
         this.toggleModal('.landing-modal');
-        //this.toggleFullScreen();
+        this.toggleFullScreen();
+        window.screen.lockOrientation('portrait-primary');
     }
 
     submitPrizeForm = () => {
@@ -297,24 +298,5 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 window.addEventListener('orientationchange', function() {
-    //Common.reloadModels();
-    // On non-orientable device, isLandscape is set to true
-    const isLandscape = window.orientation !== undefined ?
-        (window.orientation === -90 || window.orientation === 90) :
-        true
 
-    // Store the current artoolkit projection matrix
-    let matrix = arToolkitContext.getProjectionMatrix()
-
-    // If the device is in landscape mode, we scale the matrix to invert the aspect ratio.
-    // I use 4 / 3 because my artoolkitSource is set to 640 x 480. 
-    if (isLandscape) {
-        mat = mat.clone()
-        const ratio = 4 / 3
-        matrix.elements[0] *= ratio
-        matrix.elements[5] *= 1 / ratio
-    }
-
-    // Update the projection matrix of the camera
-    camera.projectionMatrix.copy(matrix)
 });
