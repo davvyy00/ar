@@ -99,7 +99,7 @@ var Common = (function() {
     removeModelsFromScene = (resetLocations) => {
         const beeModels = document.querySelectorAll('.mug') || [];
 
-        if(resetLocations) {
+        if (resetLocations) {
             locations = [];
         }
 
@@ -205,18 +205,18 @@ var Common = (function() {
         formIsValid = this.validatePrizeForm(formData);
         // Submit after validation
         // Send email ? what action to take after submitting form
-        formData.forEach((item)=>{
+        formData.forEach((item) => {
             console.log(`${item.id} ${item.value}`)
-            if(item.id === 'email') {
+            if (item.id === 'email') {
                 email = item.email;
             }
         })
 
         // TODO if form is valid sent request to freshdesk by email
-        if(formIsValid) {
+        if (formIsValid) {
             this.toggleModal('.claim-prize-modal');
 
-            setTimeout(()=>{
+            setTimeout(() => {
                 this.setPrizeId();
                 // TODO test
                 //Services.setPrizeClaimed(currentBee.id, email);
@@ -227,32 +227,32 @@ var Common = (function() {
 
     validatePrizeForm = (inputs) => {
         let isValid = true;
-        inputs.forEach((item)=>{
+        inputs.forEach((item) => {
             // Clear the message
             this.setValidationErrorMsg(item, '')
-            if(item.id === 'name') {
-                if(!item.value) {
+            if (item.id === 'name') {
+                if (!item.value) {
                     this.setValidationErrorMsg(item, ' *Required')
                     isValid = false;
                 }
             } else if (item.id === 'email') {
-                if(!item.value) {
+                if (!item.value) {
                     this.setValidationErrorMsg(item, ' *Required')
                     isValid = false
                 }
             } else if (item.id === 'answer') {
-                if(item.value != 7) {
+                if (item.value != 7) {
                     // TODO use random questions
                     this.setValidationErrorMsg(item, ' *Incorrect')
                     isValid = false
                 }
-            } 
+            }
         })
 
         return isValid;
     }
 
-    setValidationErrorMsg = (input, errorMsg)=> {
+    setValidationErrorMsg = (input, errorMsg) => {
         let errorLabel = document.querySelector(`form span#${input.id}`);
 
         errorLabel.innerHTML = errorMsg;
@@ -261,7 +261,7 @@ var Common = (function() {
     reloadModels = () => {
         this.removeModelsFromScene(false);
 
-        locations.forEach((location, index)=>{
+        locations.forEach((location, index) => {
             this.addModelToScene(location.coordinates, configOne, index);
         })
     }
@@ -297,5 +297,24 @@ document.addEventListener('DOMContentLoaded', (event) => {
 });
 
 window.addEventListener('orientationchange', function() {
-    Common.reloadModels();
+    //Common.reloadModels();
+    // On non-orientable device, isLandscape is set to true
+    const isLandscape = window.orientation !== undefined ?
+        (window.orientation === -90 || window.orientation === 90) :
+        true
+
+    // Store the current artoolkit projection matrix
+    let matrix = artoolkitContext.getProjectionMatrix()
+
+    // If the device is in landscape mode, we scale the matrix to invert the aspect ratio.
+    // I use 4 / 3 because my artoolkitSource is set to 640 x 480. 
+    if (isLandscape) {
+        mat = mat.clone()
+        const ratio = 4 / 3
+        matrix.elements[0] *= ratio
+        matrix.elements[5] *= 1 / ratio
+    }
+
+    // Update the projection matrix of the camera
+    camera.projectionMatrix.copy(matrix)
 });
