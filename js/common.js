@@ -304,7 +304,7 @@ window.addEventListener('orientationchange', function() {
         true
 
     // Store the current artoolkit projection matrix
-    let matrix = artoolkitContext.getProjectionMatrix()
+    let matrix = arToolkitContext.getProjectionMatrix()
 
     // If the device is in landscape mode, we scale the matrix to invert the aspect ratio.
     // I use 4 / 3 because my artoolkitSource is set to 640 x 480. 
