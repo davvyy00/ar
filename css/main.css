@@ -24,7 +24,6 @@ html {
     height: 100px;
     background-color: white;
     width: 100vw;
-    visibility: hidden;
 }
 
 .close-btn {
@@ -150,7 +149,7 @@ input {
     background-color: transparent;
     outline: none;
     color: var(--main-text-color);
-    caret-color: white;
+    caret-color: var(--main-text-color);
     font-size: 15px
 }
 
