@@ -5,7 +5,7 @@ var Common = (function() {
     //const configOne = { asset: 'obj: #bee-obj; mtl: #bee-mtl', scale: '10 10 10' };
     const configOne = { asset: '#mug', scale: '.04 .04 .04' };
 
-    const locations = [];
+    let locations = [];
 
     let currentBee;
 
