@@ -96,10 +96,12 @@ var Common = (function() {
 
     }
 
-    removeModelsFromScene = () => {
+    removeModelsFromScene = (resetLocations) => {
         const beeModels = document.querySelectorAll('.mug') || [];
 
-        locations = [];
+        if(resetLocations) {
+            locations = [];
+        }
 
         beeModels.forEach((item) => {
             item.remove();
@@ -119,7 +121,7 @@ var Common = (function() {
 
                 if (distance && distance > .05) {
                     // Remove the old locations before adding new ones
-                    this.removeModelsFromScene();
+                    this.removeModelsFromScene(true);
                     // Update current coords
                     this.setCurrentUserLocation(newCoords);
                     // get prizes from new location
@@ -257,7 +259,7 @@ var Common = (function() {
     }
 
     reloadModels = () => {
-        this.removeModelsFromScene();
+        this.removeModelsFromScene(false);
 
         locations.forEach((location, index)=>{
             this.addModelToScene(location , configOne, index);
