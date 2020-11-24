@@ -195,7 +195,7 @@ var Common = (function() {
     agreeToLegalText = () => {
         this.toggleModal('.landing-modal');
         this.toggleFullScreen();
-        window.screen.lockOrientation('portrait-primary');
+        window.screen.orientation.lock('portrait');
     }
 
     submitPrizeForm = () => {
