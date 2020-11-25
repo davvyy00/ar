@@ -66,7 +66,7 @@ var Common = (function() {
         return currentBee;
     }
 
-    addModelToScene = (location, config, index) => {
+    addModelToScene = (location, config, index, bee_type) => {
         const scene = document.querySelector('a-scene');
         const icon = document.createElement('a-entity');
         icon.setAttribute('gps-entity-place', `latitude: ${location.latitude}; longitude: ${location.longitude}`);
@@ -81,16 +81,18 @@ var Common = (function() {
 
         // Give the bee element time to render before changing its color
         this.setTimeout(()=>{
-            this.setColorOfBee(document.getElementById(index));
+            this.setColorOfBee(document.getElementById(index), bee_type);
         }, 2000)
     }
 
-    setColorOfBee = (bee, type, color) => {
+    setColorOfBee = (bee, bee_type) => {
         const obj = bee.getObject3D('mesh') || {};
+
+        const COLORS = {CASH: '#f7b00a', SPONSER: 'green', SWEEPSTAKE: 'blue'}
 
         obj.traverse((node)=>{
             if(node.material) {
-                node.material.color.set('red');
+                node.material.color.set(COLORS[bee_type]);
             }
         })
     }
@@ -127,7 +129,7 @@ var Common = (function() {
             let location = item.data();
             let id = { id: item.id };
             locations.push(Object.assign(item.data(), id));
-            this.addModelToScene(location.coordinates, configOne, index);
+            this.addModelToScene(location.coordinates, configOne, index, location.prize_type);
         })
 
     }
