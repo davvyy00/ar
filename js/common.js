@@ -86,7 +86,7 @@ var Common = (function() {
     }
 
     setColorOfBee = (bee, type, color) => {
-        const obj = bee.getObject3D('mesh');
+        const obj = bee.getObject3D('mesh') || {};
 
         obj.traverse((node)=>{
             if(node.material) {

@@ -15,8 +15,6 @@
     <script defer src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
     <script defer src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
-    <!-- initialize firestore -->
-    <script defer src="js/firestoreInit.js"></script>
     <!-- The click event does not work after version 0.9.2 -->
     <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script>
     <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
@@ -62,7 +60,7 @@
         <div class="moved"></div>
     </div>
     <div class="close-btn" onclick="Common.closeApp()">CLOSE</div>
-    <div class="claim-prize-modal modal open">
+    <div class="claim-prize-modal modal closed">
         <div class="header blue-text">CONGRATS <span class="yellow-text">You won a $100 cash</span></div>
         <form class="form-container prize-form">
             <label>FULL NAME</label><span class="error-msg" id="name"></span>
@@ -74,7 +72,7 @@
             <div class="redem-btn btn" onclick="Common.submitPrizeForm()">REDEEM</div>
         </form>
     </div>
-    <div class="landing-modal modal closed">
+    <div class="landing-modal modal open">
         <div class="landing-modal-header blue-text">THE QUEST FOR THE <span class="yellow-text">BEEZ</span></div>
         <div class="legal-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
         <div class="continue-btn btn" onclick="Common.agreeToLegalText()">START PLAYING</div>
