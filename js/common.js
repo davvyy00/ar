@@ -3,7 +3,7 @@ var Common = (function() {
     let currentUserLocation;
 
     //const configOne = { asset: 'obj: #bee-obj; mtl: #bee-mtl', scale: '10 10 10' };
-    const configOne = { asset: '#mug', scale: '.04 .04 .04' };
+    const configOne = { asset: '#mug', scale: '.01 .01 .01' };
 
     let locations = [];
 
