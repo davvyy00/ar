@@ -17,8 +17,12 @@
   },
   "homepage": "https://github.com/davvyy00/ar#readme",
   "devDependencies": {
+    "csv-parse": "^4.14.1",
     "javascript-obfuscator": "^2.9.4",
-    "uglify-es": "^3.3.9",
-    "uglify-js": "^3.11.6"
+    "neat-csv": "^5.2.0"
+  },
+  "dependencies": {
+    "firebase": "^8.1.1",
+    "geofirestore": "^4.3.0"
   }
 }

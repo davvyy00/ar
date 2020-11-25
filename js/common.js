@@ -2,14 +2,37 @@ var Common = (function() {
 
     let currentUserLocation;
 
-    //const configOne = { asset: 'obj: #bee-obj; mtl: #bee-mtl', scale: '10 10 10' };
-    const configOne = { asset: '#mug', scale: '.005 .005 .005' };
+    const configOne = { asset: 'obj: #bee-obj; mtl: #bee-mtl', scale: '.005 .005 .005' };
 
     let locations = [];
 
     let currentBee;
 
     let locationChangedCount = 0;
+
+    const questions = [
+        { question: 'WHAT IS 6 + 5', answer: 11},
+        { question: 'NAME THE COUNTRY YOU LIVE IN', answer: 'canada'},
+        { question: 'WHAT IS 4 + 3', answer: 7}
+    ]
+
+    let currentQuestion;
+
+    setRandomQuestion = () => {
+        var item = questions[Math.floor(Math.random() * questions.length)];
+
+        currentQuestion = item;
+
+        document.querySelector('.question-label').innerHTML = currentQuestion.question;
+    }
+
+    isAnswerToQuestionCorrect = (answer)=> {
+        if(!answer) {
+            return false
+        }
+
+        return currentQuestion.answer == answer.toLowerCase();
+    }
 
     toggleFullScreen = () => {
         console.log('make full screen');
@@ -47,9 +70,7 @@ var Common = (function() {
         const scene = document.querySelector('a-scene');
         const icon = document.createElement('a-entity');
         icon.setAttribute('gps-entity-place', `latitude: ${location.latitude}; longitude: ${location.longitude}`);
-        icon.setAttribute('obj-model', 'obj: #bee-obj; mtl: #bee-mtl');
-        //icon.setAttribute('gltf-model', config.asset);
-        //icon.setAttribute('uuid', location.uuid);
+        icon.setAttribute('obj-model', config.asset);
         icon.setAttribute('scale', config.scale);
         icon.setAttribute('clickhandler', '');
         icon.setAttribute('animation-mixer', '');
@@ -58,6 +79,7 @@ var Common = (function() {
 
         scene.appendChild(icon);
 
+        // Give the bee element time to render before changing its color
         this.setTimeout(()=>{
             this.setColorOfBee(document.getElementById(index));
         }, 2000)
@@ -66,7 +88,6 @@ var Common = (function() {
     setColorOfBee = (bee, type, color) => {
         const obj = bee.getObject3D('mesh');
 
-        debugger
         obj.traverse((node)=>{
             if(node.material) {
                 node.material.color.set('red');
@@ -257,7 +278,7 @@ var Common = (function() {
                     isValid = false
                 }
             } else if (item.id === 'answer') {
-                if (item.value != 7) {
+                if (!this.isAnswerToQuestionCorrect(item.value)) {
                     // TODO use random questions
                     this.setValidationErrorMsg(item, ' *Incorrect')
                     isValid = false
@@ -293,7 +314,8 @@ var Common = (function() {
         setCurrentBee,
         agreeToLegalText,
         submitPrizeForm,
-        reloadModels
+        reloadModels,
+        setRandomQuestion
     };
 })();
 
@@ -301,6 +323,8 @@ var Common = (function() {
 document.addEventListener('DOMContentLoaded', (event) => {
 
     console.log('DOM loaded');
+
+    Common.setRandomQuestion();
 
     setTimeout(() => {
         Common.addInitialLocations();

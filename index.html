@@ -8,6 +8,7 @@
     <meta name="mobile-web-app-capable" content="yes">
     <title>Location-based AR.js demo</title>
     <link rel="stylesheet" href="css/main.css">
+    <!-- TODO use firebase and geofirestore NPM packages -->
     <!-- script to get locations by geo location radius -->
     <script src="https://unpkg.com/geofirestore/dist/geofirestore.js"></script>
     <!-- import the firebase librarys -->
@@ -61,19 +62,19 @@
         <div class="moved"></div>
     </div>
     <div class="close-btn" onclick="Common.closeApp()">CLOSE</div>
-    <div class="claim-prize-modal modal closed">
+    <div class="claim-prize-modal modal open">
         <div class="header blue-text">CONGRATS <span class="yellow-text">You won a $100 cash</span></div>
         <form class="form-container prize-form">
             <label>FULL NAME</label><span class="error-msg" id="name"></span>
             <input type="text" id="name">
             <label>EMAIL ADDRESS</label><span class="error-msg" id="email"></span>
             <input type="email" id="email">
-            <label>WhAT IS 5 + 2</label><span class="error-msg" id="answer"></span>
+            <label class="question-label"></label><span class="error-msg" id="answer"></span>
             <input type="text" id="answer">
             <div class="redem-btn btn" onclick="Common.submitPrizeForm()">REDEEM</div>
         </form>
     </div>
-    <div class="landing-modal modal open">
+    <div class="landing-modal modal closed">
         <div class="landing-modal-header blue-text">THE QUEST FOR THE <span class="yellow-text">BEEZ</span></div>
         <div class="legal-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</div>
         <div class="continue-btn btn" onclick="Common.agreeToLegalText()">START PLAYING</div>
