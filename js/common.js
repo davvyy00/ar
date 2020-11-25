@@ -56,7 +56,19 @@ var Common = (function() {
         icon.setAttribute('class', 'mug');
         icon.setAttribute('id', index);
 
+        this.setColorOfBee(icon);
+
         scene.appendChild(icon);
+    }
+
+    setColorOfBee = (bee, type, color) => {
+        const obj = bee.getObject3D('mesh');
+
+        obj.traverse((node)=>{
+            if(node.material) {
+                node.material.color.set('red');
+            }
+        })
     }
 
     setCurrentUserLocation = (coords) => {
