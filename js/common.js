@@ -56,14 +56,15 @@ var Common = (function() {
         icon.setAttribute('class', 'mug');
         icon.setAttribute('id', index);
 
-        this.setColorOfBee(icon);
-
         scene.appendChild(icon);
+
+        this.setColorOfBee(document.querySelector(`.mug#${index}`));
     }
 
     setColorOfBee = (bee, type, color) => {
         const obj = bee.getObject3D('mesh');
 
+        debugger
         obj.traverse((node)=>{
             if(node.material) {
                 node.material.color.set('red');
