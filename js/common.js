@@ -58,7 +58,7 @@ var Common = (function() {
 
         scene.appendChild(icon);
 
-        this.setColorOfBee(document.querySelector(`.mug#${index}`));
+        this.setColorOfBee(document.getElementById(index));
     }
 
     setColorOfBee = (bee, type, color) => {
