@@ -58,7 +58,9 @@ var Common = (function() {
 
         scene.appendChild(icon);
 
-        this.setColorOfBee(document.getElementById(index));
+        this.setTimeout(()=>{
+            this.setColorOfBee(document.getElementById(index));
+        }, 2000)
     }
 
     setColorOfBee = (bee, type, color) => {
